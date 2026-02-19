@@ -247,9 +247,57 @@ function onMovieUpdate() {
 
   // UPDATE ON UI
 
+  let movieCard = document.getElementById(UPDATE_ID)
+
+  movieCard.innerHTML = `
+    <div class="card-header">
+        <div class="row">
+            <div class="col-10">
+                <h4>${UPDATED_OBJ.movieName}</h4>
+            </div>
+            <div class="col-2">
+                <h4>
+                    <span class="badge ${setRating(UPDATED_OBJ.movieRating)}">
+                        ${UPDATED_OBJ.movieRating}
+                    </span>
+                </h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body p-0">
+        <figure>
+            <img 
+              src="${UPDATED_OBJ.movieImg}"
+              alt="${UPDATED_OBJ.movieName}" 
+              title="${UPDATED_OBJ.movieName}">
+            <figcaption>
+                <h5>${UPDATED_OBJ.movieName}</h5>
+                <p>
+                    ${UPDATED_OBJ.movieDescription}
+                </p>
+            </figcaption>
+        </figure>
+    </div>
+
+    <div class="card-footer d-flex justify-content-between">
+        <button onclick="onEdit(this)" class="btn btn-sm net-sec-btn">Edit</button>
+        <button onclick="onRemove(this)" class="btn btn-sm net-pri-btn">Remove</button>
+    </div>
+`
+
+  snackBar(`The movie ${UPDATED_OBJ.movieName} is updated successfully !!!`, 'success')
+
+  addMovieBtn.classList.remove('d-none');
+  updateMovieBtn.classList.add('d-none');
+
+
+
+}
   
 
 }
 
 movieForm.addEventListener('submit', onMovieAdd)
+
 updateMovieBtn.addEventListener('click', onMovieUpdate)

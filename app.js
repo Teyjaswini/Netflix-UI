@@ -301,3 +301,8 @@ function onMovieUpdate() {
 movieForm.addEventListener('submit', onMovieAdd)
 
 updateMovieBtn.addEventListener('click', onMovieUpdate)
+
+window.onEdit = onEdit;
+window.onRemove = onRemove;
+
+
